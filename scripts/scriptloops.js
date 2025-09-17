@@ -54,14 +54,38 @@
 //     console.log(colors[k]);
 // }
 
-let grade = parseInt(prompt("What did you get on the test"))
+// let grade = parseInt(prompt("What did you get on the test"))
 
-if (grade >= 90) {
-    console.log("A");
-} else if (grade >= 75) {
-    console.log("B");
-} else if (grade >= 65) {
-    console.log("C");
-} else {
-    console.log("Failed");
-}
+// if (grade >= 90) {
+//     console.log("A");
+// } else if (grade >= 75) {
+//     console.log("B");
+// } else if (grade >= 65) {
+//     console.log("C");
+// } else {
+//     console.log("Failed");
+// }
+
+// function hardwareStore() {
+//     let input;
+//     let inventory = ['hammer', 'screwdriver', 'utility knife', 'bleach', 'ammonia', 'sandpaper', 'saw',];
+//     while(true) {
+//         input = prompt("Hi welcome to the hardware store what do you want (or type quit to quit)");
+//         input = input.toLowerCase();
+//         if (input == "quit") {
+//             console.log("Okay byeeeee")
+//             break;
+//         }
+//         else if (inventory.includes(input)) {
+//             console.log(input+"? Yeah we have that")
+//         }
+//         else {
+//             console.log("No we dont have that try again")
+//         }
+//     }
+// }
+
+// hardwareStore();
+
+let input = prompt("");
+console.log(input);

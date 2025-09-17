@@ -43,3 +43,9 @@ switch (grade) {
         console.log("What");
         break;
 }
+
+let mult = (x, y => x*y);
+function mult2(x, y) {return x*y;}
+function divide2(z, w) {return w == 0 ? null : z/w;}
+function add2(a, k) {return a + k;}
+function sub2(u, v) {return u - v;}
