@@ -58,10 +58,11 @@ while (true) {
     else {break;}
 }
 
-let rangeLower = 1;
+let rangeLowerInitial
+let rangeLower = rangeLowerInitial;
 let rangeHigher = 100;
 function getrange() {
-    if (rangeLower == 1 && rangeHigher == 2) {
+    if (rangeLowerA == rangeLowerInitial && rangeHigher == rangeLowerInitial + 1) {
         return 0;
     }
     else {return Math.max(Math.floor((rangeHigher-rangeLower)/2), 1);}
