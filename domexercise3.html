@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3</title>
+    <style>
+        .tic-tac-toe-cell {
+            border: 1px solid black;
+            text-align: center;
+            padding: 3px;
+            font-size: 24px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .js-container {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generating HTML in JS</h1>
+    <section class="js-container" style="font-weight: bold; font-family: Consolas;"></section>
+    <script>
+        function moMove() {
+            const value = Math.random();
+            return value < 0.2 ? 'X' : value < 0.4 ? 'O' : null;
+        }
+        const board = new Array(20).fill(null).map(
+            () => new Array(20).fill(null).map(moMove)
+        );
+        const boardPlayable = new Array(20).fill(null).map(() => new Array(20).fill(" "))
+        
+        //A. Express our 20x20 tic-tac-toe board as an HTML table
+        // const container = document.querySelector('.js-container');
+        // let html = "<table>";
+        // let cell;
+        // for (let row = 0; row < 20; row++) {
+        //     for (let column = 0; column < 20; column++) {
+        //         if (column == 0) {html += "<tr>";}
+        //         cell = board[row][column] === null ? ' ' : board[row][column];
+        //         html += `<td class="tic-tac-toe-cell">${cell}</td>`;
+        //         if (column == 19) {html += "</tr>";}
+        //     }
+        // }
+        // html += "</table>"
+
+        //B. Make it playable
+        const container = document.querySelector('.js-container');
+        let html = "<table>";
+        let cell;
+        function resetGame() {
+            for (let row = 0; row < 20; row++) {
+            for (let column = 0; column < 20; column++) {
+                if (column == 0) {html += "<tr>";}
+                html += `<td class="tic-tac-toe-cell" data-row="${row}" data-col="${column}">${" "}</td>`;
+                if (column == 19) {html += "</tr>";}
+            }
+        }
+        }
+        resetGame();
+        html += "</table>"
+        container.innerHTML = html;
+        function checkSolution(cell) {
+            let mark = cell.innerText;
+            let targetRow = cell.dataset.row;
+            let targetCol = cell.dataset.col;
+            let i;
+            for (i = 0; i < 20; i++) {
+                console.log(`Checking column ${i}`);
+                if (boardPlayable[targetRow][i] != mark) {
+                    break;
+                }
+            }
+            if (i == 20) {alert(`${mark} wins!`)}
+            for (i = 0; i < 20; i++) {
+                console.log(`Checking row ${i}`)
+                if (boardPlayable[i][targetCol] != mark) {
+                    break;
+                }
+            }
+            if (i == 20) {alert(`${mark} wins!`)}
+        }
+
+        let turn = true;
+        container.addEventListener('click', (event) => {
+            event.stopImmediatePropagation();
+            cell = event.target.closest('.tic-tac-toe-cell');
+            if (cell == null) {return;}
+            if (['X', 'O'].includes(cell.innerText)) {return;}
+            cell.innerText = turn ? "X" : "O";
+            boardPlayable[cell.dataset.row][cell.dataset.col] = cell.innerText;
+            turn = !turn;
+            checkSolution(cell);
+        })
+    </script>
+</body>
+</html>

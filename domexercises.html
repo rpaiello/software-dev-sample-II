@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise</title>
+</head>
+<body>
+    <h1>Main title</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos, nam.</p>
+    <p>Quae saepe asperiores vero temporibus rem molestias eveniet accusantium ad.</p>
+    <p>Cheesy bread</p>
+    <p>Denny's Grand Slam</p>
+    <ol>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Necessitatibus, illum!</li>
+        <li>Commodi ea, debitis temporibus ex nulla quidem provident. Dignissimos, quo.</li>
+        <li>Sunt neque quasi cupiditate ipsam nulla. Voluptatum fugiat quam omnis?</li>
+        <li>Excepturi eius nisi expedita fuga veritatis sed consequatur mollitia eligendi.</li>
+        <li>Atque delectus, quis praesentium hic repellendus repellat quod optio similique!</li>
+    </ol>
+</body>
+<script>
+    //A. Print the current content of the list items in the console log
+    for (let item of document.querySelectorAll('li')) {
+        console.log(item.innerText);
+    }
+    //B. Console log the first word of the second paragraph
+    let e2 = document.querySelectorAll('li')[1];
+    console.log(e2.innerText.split(' ')[0])
+    //C. Console log the number of paragraphs on the website
+    console.log(document.querySelectorAll('p').length);
+</script>
+</html>

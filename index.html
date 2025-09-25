@@ -3,11 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Localhost</title>
     <link rel="icon" href="media/DonutEvan.png">
 </head>
 <body>
-    
+    <div style="display: flex; justify-content: center;"><img src="media/DonutEvan.png" alt="donut Evan" width="100px" alt=""></div>
+    <header style="text-align: center;">
+        <h1 id="thisheader">Hi</h1>
+        <button id="hchanger" onclick="welcome()">Click me</button>
+    </header>
+
+    <p class="example">First p</p>
+    <p class="example">Second p that is different from the first</p>
+
+    <div>
+        <ul id="custom-list"></ul>
+        <input type="text" id = "listitem">
+        <button onclick="addItem()">ADD ITEM</button>
+        <button onclick="removeItem()">REMOVE ITEM</button>
+        <button onclick="cheesify()">REPLACE ALL ITEMS WITH "Cheese"</button>
+    </div>
+
+    <div>
+        <p style="font-family: Consolas;" id="outpt">0</p>
+        <button class="plus" onclick="doIncrement(1)">+</button>
+        <button class="minus" onclick="doIncrement(-1)">-</button>
+    </div>
+
+    <p id="alternatingtext"><b>ONE</b></p>
+    <button onclick="doalternate()">CLICK ME</button>
 </body>
-<script src="scripts/quiz.js"></script>
+<script src="scripts/js-dom.js"></script>
 </html>

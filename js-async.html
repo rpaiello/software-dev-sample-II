@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="query">
+    <div id="result"></div>
+    <div id="digitimer" style="font-weight: bold; font-family: Consolas; font-size: 50px;"></div>
+    <button id="reset">reset</button>
+    <button id="pause">start/stop</button>
+
+    <script>
+        let query = document.querySelector('#query');
+        let result = document.querySelector('#result')
+        let timerID = null;
+
+        query.addEventListener('input', () => {
+            let value = query.value;
+            console.log(value);
+            result.textContent = 'Searching'
+            if (timerID) {
+                clearTimeout(timerID);
+            }
+            timerID = setTimeout(() => {
+                result.textContent = `${value} found!`
+                timerID = null;
+            }, Math.floor(Math.random()*2000 + 3000));
+        });
+
+        let pause = true;
+        let ms = 0;
+        let digitimer;
+        let reset = document.querySelector('#reset');
+        let sstop = document.querySelector('#pause');
+        let timerDisplay = document.querySelector('#digitimer');
+        timerDisplay.textContent = "00:00.0"
+        reset.addEventListener('click', () => {
+            ms = 0;
+            timerDisplay.textContent = "00:00.0"
+        })
+        sstop.addEventListener('click', () => {
+            pause = !pause;
+            if (!pause) {
+            digitimer = setInterval(() => {
+                ms++;
+                let minutes = Math.floor(ms / 600);
+                let seconds = Math.floor(ms / 10 % 60);
+                timerDisplay.textContent = `${minutes > 9 ? "" : "0"}${minutes}:${seconds > 9 ? "" : "0"}${seconds}.${ms % 10}`
+            }, 100)}
+            else {
+                clearInterval(digitimer);
+            }
+        })
+
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2</title>
+</head>
+<body>
+    <h1>Main title</h1>
+    <section class="page-section first-section js-first-section">
+        <h2 class="section-title js-first-section-title">First Section Title</h2>
+        <ul>
+            <li>Lorem, ipsum.</li>
+            <li>Praesentium, incidunt.</li>
+            <li>Natus, quisquam.</li>
+            <li>Laborum, eius!</li>
+            <li>Magni, tempora?</li>
+        </ul>
+    </section>
+    <section class="page-section second-section js-second-section">
+        <h2 class="section-title js-second-section-title"></h2>
+        <ul>
+            <li>Velit, quidem optio.</li>
+            <li>Ullam, cupiditate possimus.</li>
+            <li>Laboriosam, enim odit.</li>
+            <li>Dicta, possimus necessitatibus!</li>
+            <li>Molestias, quos veniam.</li>
+        </ul>
+    </section>
+    <script>
+        //Console log the second and the fourth list items from the second section only
+
+        //A. Using ".js-second-section"
+        for (let index of [1, 3]) {
+            console.log(document.querySelectorAll('.js-second-section > ul > li')[index].innerText)
+        }
+
+        //B. Without using ".js-second-section"
+        for (let index of [1, 3]) {
+            console.log(document.querySelectorAll('.js-second-section-title + ul > li')[index].innerText)
+        }
+    </script>
+</body>
+</html>

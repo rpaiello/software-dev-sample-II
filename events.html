@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" style="background-color: wheat;">
+        <button id="btn1">Click me</button>
+        <input type="text" placeholder="type something..." id="input">
+        <p id="preview"></p>
+    </div>
+    <div>
+        <input type="text" id="codepad" readonly>
+        <div style="display: grid; width: 30%; grid-template-columns: auto auto auto;" id="casing">
+            <button class="codebutton" data-val="1">1</button><button class="codebutton" data-val="2">2</button><button class="codebutton" data-val="3">3</button><button class="codebutton" data-val="4">4</button><button class="codebutton" data-val="5">5</button><button class="codebutton" data-val="6">6</button><button class="codebutton" data-val="7">7</button><button class="codebutton" data-val="8">8</button><button class="codebutton" data-val="9">9</button>
+            <button class="codebutton" data-val="0">0</button> <button class="codebutton" data-val="-1" style="grid-column-start: 2; grid-column-end: 4;">CLEAR</button>
+            <button class="codebutton" data-val="+">+</button>
+            <button class="codebutton" data-val="-">-</button>
+            <button class="codebutton" data-val="*">*</button>
+            <button class="codebutton" data-val="/">/</button>
+            <button class="codebutton" style="grid-column-start: 2; grid-column-end: 4;" data-val="=">=</button>
+        </div>
+    </div>
+    <script>
+        function clickA() {
+            console.log("U clicked the button");
+        }
+        function clickB() {
+            console.log("U clicked the background")
+        }
+        document.querySelector('#btn1').addEventListener('click', (event) => {
+            clickA();
+            event.stopPropagation();
+        });
+        document.querySelector('.container').addEventListener('click', (event) => clickB())
+        document.querySelector('#input').addEventListener('input', (event) => {document.querySelector('#preview').innerText = event.target.value})
+
+        let keys = document.querySelector('#casing');
+        let pad = document.querySelector('#codepad');
+        keys.addEventListener('click', (event) => {
+            let btn = event.target.closest('button');
+            if (btn == null) {return;}
+            if (btn.dataset.val == -1) {
+                pad.value = "";
+                return;
+            }
+            if (btn.dataset.val === "=") {
+                let result = eval(pad.value);
+                pad.value = result;
+                return;
+            }
+            pad.value += btn.dataset.val;
+        })
+        // keys = document.querySelectorAll('.codebutton');
+        // for (let key of keys) {
+        //     key.addEventListener('click', () => {
+        //         if (key.dataset.val == -1) {
+        //             pad.value = "";
+        //         } else {pad.value += key.dataset.val;}
+        //     }) 
+        // }
+    </script>
+</body>
+</html>

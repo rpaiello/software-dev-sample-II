@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo form</h1>
+    <form action="#" method="GET" class="js-form">
+        <div class="form-row">
+            <label for="">
+                Todo item name:
+                <input type="text" name="todo-name" id="">
+            </label>
+        </div>
+        <div class="form-row">
+            <label for="">
+                Target date:
+                <input type="date" name="todo-deadline">
+            </label>
+        </div>
+        <button type="submit">Add</button>
+        <section class="js-container">
+
+        </section>
+    </form>
+    <script>
+        const form = document.querySelector('.js-form');
+        const todoItems = [];
+        function renderTodo() {
+            let html = '<ul>';
+            for (let item of todoItems) {
+                html += `<li><b>Name: </b>${item.todoName}\n<b>Date: </b>${item.todoDate}</li>`;
+            }
+            html += '</ul>';
+            document.querySelector('.js-container').innerHTML = html;
+        }
+        
+        function formSubmitted(event) {
+            event.preventDefault();
+            todoItems.push ({
+                todoName: form.querySelector('[name=todo-name]').value,
+                todoDate:  form.querySelector('[name=todo-deadline]').value,
+            })
+            form.querySelector('[name=todo-name]').value = "";
+            todoDate:  form.querySelector('[name=todo-deadline]').value = "";
+            renderTodo();
+        }
+        
+        form.addEventListener('submit', formSubmitted);
+    </script>
+</body>
+</html>
